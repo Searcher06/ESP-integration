@@ -1,12 +1,12 @@
 import express from "express";
 import {
-  saveApiKey,
+  integrateEsp,
   getAllAudiences,
 } from "../controllers/integrations.controller.js";
 
 const router = express.Router();
 
-router.post("/:esp", saveApiKey);
+router.post("/:esp", integrateEsp);
 router.get("/:esp/lists", getAllAudiences);
 
 export default router;
