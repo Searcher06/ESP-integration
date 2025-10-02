@@ -1,5 +1,8 @@
 import express from "express";
-import { saveApiKey, getAllAudiences } from "../controllers/esp.controllers.js";
+import {
+  saveApiKey,
+  getAllAudiences,
+} from "../controllers/integrations.controller.js";
 
 const router = express.Router();
 

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const espSchema = new mongoose.Schema({
+const integrationSchema = new mongoose.Schema({
   esp: {
     type: String,
     enum: ["mailChimp", "getResponse"],
@@ -10,10 +10,18 @@ const espSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  status: {
+    type: String,
+    required: true,
+    enum: ["connected", "disconnected"],
+  },
   createdAt: {
     type: Date,
     default: Date.now,
   },
 });
 
-export const espModel = mongoose.model("Esp", espSchema);
+export const integrationModel = mongoose.model(
+  "Integration",
+  integrationSchema
+);
