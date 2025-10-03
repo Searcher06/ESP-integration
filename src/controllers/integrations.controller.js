@@ -111,13 +111,13 @@ export const getAllAudiences = async (req, res, next) => {
         lists: response.data,
       });
     } else if (esp == "mailChimp") {
-      const dc = apiKey.split("-")[1];
+      const dc = integrationExists.apiKey.split("-")[1]; // This is called the data centre it's part of the url
       const response = await axios.get(
         `https://${dc}.api.mailchimp.com/3.0/lists`,
         {
           auth: {
             username: "anything", // This is required but it can be anything
-            password: apiKey,
+            password: integrationExists.apiKey,
           },
         }
       );
