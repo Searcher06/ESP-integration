@@ -10,7 +10,7 @@ export const integrateEsp = async (req, res, next) => {
   }
 
   // prettier-ignore
-  if(esp !== "mailChimp" && esp !== "getResponse"){
+  if(esp !== "mailchimp" && esp !== "getresponse"){
     res.status(400);
     throw new Error("Invalid email service provider!")
   }
@@ -26,7 +26,7 @@ export const integrateEsp = async (req, res, next) => {
   }
 
   try {
-    if (esp == "getResponse") {
+    if (esp == "getresponse") {
       const response = await axios.get(
         "https://api.getresponse.com/v3/campaigns",
         {
@@ -42,10 +42,10 @@ export const integrateEsp = async (req, res, next) => {
       res.status(201).json({
         success: true,
         message: `Integration with ${esp} connected successfully`,
-        provider: `${esp}`,
+        provider: integration.esp,
         status: integration.status,
       });
-    } else if (esp == "mailChimp") {
+    } else if (esp == "mailchimp") {
       const dc = apiKey.split("-")[1];
       const response = await axios.get(
         `https://${dc}.api.mailchimp.com/3.0/lists`,
@@ -67,7 +67,7 @@ export const integrateEsp = async (req, res, next) => {
       res.status(201).json({
         success: true,
         message: `Integration with ${esp} connected successfully`,
-        provider: `${esp}`,
+        provider: integration.esp,
         status: integration.status,
       });
     }
@@ -81,7 +81,7 @@ export const getAllAudiences = async (req, res, next) => {
 
   // checking if the ESP name is valid
   // prettier-ignore
-  if(esp !== "mailChimp" &&  esp !== "getResponse"){
+  if(esp !== "mailchimp" &&  esp !== "getresponse"){
     res.status(400);
     throw new Error("Invalid email service provider")
   }
@@ -97,7 +97,7 @@ export const getAllAudiences = async (req, res, next) => {
   }
 
   try {
-    if (esp == "getResponse") {
+    if (esp == "getresponse") {
       const response = await axios.get(
         "https://api.getresponse.com/v3/campaigns",
         {
@@ -110,7 +110,7 @@ export const getAllAudiences = async (req, res, next) => {
         provider: `${esp}`,
         lists: response.data,
       });
-    } else if (esp == "mailChimp") {
+    } else if (esp == "mailchimp") {
       const dc = integrationExists.apiKey.split("-")[1]; // This is called the data centre it's part of the url
       const response = await axios.get(
         `https://${dc}.api.mailchimp.com/3.0/lists`,

@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const integrationSchema = new mongoose.Schema({
   esp: {
     type: String,
-    enum: ["mailChimp", "getResponse"],
+    enum: ["mailchimp", "getresponse"],
     required: true,
   },
   apiKey: {
