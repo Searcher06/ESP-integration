@@ -35,8 +35,8 @@ To get a local copy up and running, follow these simple steps.
 
 1.  **Clone the Repository**:
     ```bash
-    git clone https://github.com/Searcher06/node-assessment.git
-    cd node-assessment
+    git clone https://github.com/Searcher06/ESP-integration.git
+    cd ESP-integration
     ```
 2.  **Install Dependencies**:
     ```bash
